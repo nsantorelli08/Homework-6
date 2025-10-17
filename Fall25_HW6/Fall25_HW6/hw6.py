@@ -41,7 +41,25 @@ def problem3(searchstring):
     :param searchstring: string
     :return: string
     """
-    pass
+    pattern = r'([A-Z][a-z]*)\s+(Boy|Girl|boy|girl)'
+
+    def replace_match(match):
+        preceding_word = match.group(1)
+        target_word = match.group(2)
+
+        if target_word.lower() == 'boy':
+            replacement = 'Man' if target_word[0].isupper() else 'man'
+        else:
+            replacement = 'Woman' if target_word[0].isupper() else 'woman'
+
+        return f"{preceding_word} {replacement}"
+
+    result = re.sub(pattern, replace_match, searchstring)
+
+    if result == searchstring:
+        return "nomatch"
+    else:
+        return result
 
 
 if __name__ == '__main__':
