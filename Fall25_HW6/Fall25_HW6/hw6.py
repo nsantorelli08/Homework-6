@@ -8,7 +8,12 @@ def problem1(searchstring):
     :param searchstring: string
     :return: string
     """
-    pass
+    pattern = r'^[a-zA-Z]{1,10}\.[1-7][0-9]{2}[a-zA-Z]*@(vought\.com|godolkin\.edu|fbsa\.gov)$'
+
+    if re.fullmatch(pattern, searchstring):
+        return "valid"
+    else:
+        return "invalid"
 
 
 def problem2(searchstring):
